@@ -1,0 +1,10 @@
+<h2>My Patients</h2>
+
+<app-patient-detail [patientInput]="selectedPatient"></app-patient-detail>
+
+
+<ul class="patients">
+  <li *ngFor="let patient of patients" (click)="onSelect(patient)">
+    <span class="badge">{{patient.id}}</span> {{patient.name}}
+  </li>
+</ul>
