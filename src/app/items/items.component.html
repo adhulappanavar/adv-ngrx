@@ -2,6 +2,11 @@
 
 <app-item-detail [itemInput]="selectedItem"></app-item-detail>
 
+<ul class="items1">
+  <li *ngFor="let item of items$ | async">
+    <span class="badge">{{item.id}}</span> {{item.name}}
+  </li>
+</ul>
 
 <ul class="items">
   <li *ngFor="let item of items" (click)="onSelect(item)">

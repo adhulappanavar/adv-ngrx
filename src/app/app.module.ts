@@ -13,11 +13,15 @@ import { reducer } from './reducers';
 
 import { ItemsComponent } from './items/items.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ItemsService } from './items/items.service';
+import { ItemEffects } from './items/item.effects';
+
 import { AppRoutingModule } from './/app-routing.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+
 
 
 
@@ -37,9 +41,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.provideStore(reducer),
     // must come AFTER `provideStore` call
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(PatientEffects)
+    EffectsModule.run(PatientEffects),
+    EffectsModule.run(ItemEffects)
+
   ],
-  providers: [PatientsService],
+  providers: [PatientsService, ItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
