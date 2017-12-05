@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Patient} from '../patients/patient';
 
 @Component({
@@ -8,10 +8,19 @@ import { Patient} from '../patients/patient';
 })
 export class PatientDetailComponent implements OnInit {
   @Input() patientInput: Patient;
+  @Output('childData') outgoingData = new EventEmitter<string>();
 
-  constructor() { }
 
   ngOnInit() {
   }
 
+
+
+	childSampleData :string = "Some child Data";
+
+	constructor() { }
+
+	public sendData(data:any){
+		this.outgoingData.emit(data);
+  }
 }

@@ -4,8 +4,17 @@
   <div><span>id: </span>{{patientInput.id}}</div>
   <div>
     <label>name:
-      <input [(ngModel)]="patientInput.name" placeholder="name"/>
+      <input [(ngModel)]="patientInput.name" placeholder="name"/><button (click)="savePatient(patientInput)">Edit</button>
     </label>
   </div>
 
+</div>
+
+
+<div class="child-data">
+	<input type="text" class="form-control"
+		value="{{ childSampleData }}"
+		[(ngModel)]='childSampleData'
+		(ngModelChange)="sendData($event)"
+		placeholder="write some thing to send parent component">
 </div>

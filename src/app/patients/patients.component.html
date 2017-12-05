@@ -1,12 +1,22 @@
 <h2>My Patients</h2>
+{{mode}}
 
-<app-patient-detail [patientInput]="selectedPatient"></app-patient-detail>
+    <form #f="ngForm" (ngSubmit)="createPatient(f)" novalidate>
+      <input name="name" ngModel placeholder="Name" required #first="ngModel">
+      <input name="city" ngModel placeholder="City">
+      <button>Add</button>
+    </form>
 
+
+<!--app-patient-detail [patientInput]="selectedPatient" (childData)='handleEvent($event)'></app-patient-detail-->
+<p>Data from child component : <b>{{ sampleChildData }}</b></p>
 
 
 <ul class="patients$ | async">
   <li *ngFor="let patient of patients$ | async">
-    <span class="badge">{{patient.id}}</span> {{patient.name}}
+    <span class="badge">{{patient.id}}</span> {{patient.name}} {{patient.city}}
+    <button (click)="onSelect(patient)">Edit</button>
+    <button (click)="deletePatient(patient)">Delete</button>
   </li>
 </ul>
 
